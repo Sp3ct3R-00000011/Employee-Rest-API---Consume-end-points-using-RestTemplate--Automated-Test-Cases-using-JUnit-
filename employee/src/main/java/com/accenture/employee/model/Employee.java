@@ -1,6 +1,13 @@
 package com.accenture.employee.model;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 
+@Entity
 public class Employee {
+
+    @Id
+    @Column(name = "id", nullable = false)
     private String empID;
     private String name;
     private String designation;
@@ -12,6 +19,7 @@ public class Employee {
     private String skill_proficiency;
 
     private String location;
+
 
     public Employee() {
 
@@ -61,6 +69,7 @@ public class Employee {
     public long getSalary() {
         return salary;
     }
+
 
     public String getEmpID() {
         return empID;

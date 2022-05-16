@@ -1,8 +1,6 @@
 package com.accenture.employee.controller;
 
 import com.accenture.employee.model.Employee;
-import com.accenture.employee.service.EmployeeService;
-import jdk.nashorn.internal.ir.annotations.Ignore;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -31,15 +29,15 @@ class EmployeeApplicationControllerTests {
 
     @Test
     public void getEmployeeTest() {
-        Employee temp = empcon.getEmployee("E2");
-        assertEquals("E2", temp.getEmpID());
+        Employee temp = empcon.getEmployee("E1");
+        assertEquals("E1", temp.getEmpID());
         System.out.println(temp.getEmpID());
     }
 
     @Test
     public void getEmployeeTest_param() {
-        Employee temp = empcon.getEmployee_param("E2");
-        assertEquals("E2", temp.getEmpID());
+        Employee temp = empcon.getEmployee_param("E1");
+        assertEquals("E1", temp.getEmpID());
         System.out.println(temp.getEmpID());
     }
 
@@ -61,22 +59,24 @@ class EmployeeApplicationControllerTests {
 
     @Test
     public void UpdateEmployeeTest_path() {
-        Employee temp = new Employee("E2", "Nancy", "SSE", 10, 24500000, "Oracle", "n", "P5", "Gurgaon");
-        empcon.updateEmployee_path(temp, "E2");
+        Employee temp = new Employee("E1", "Nancy", "SSE", 10, 24500000, "Oracle", "n", "P5", "Gurgaon");
+        empcon.updateEmployee_path(temp, "E1");
         System.out.println(temp.getEmpID());
         assertNotNull(temp);
     }
 
     @Test
     public void DeleteEmployeeTest() {
-        List<Employee> temp = empcon.deleteEmployee("E3");
+        List<Employee> temp = empcon.deleteEmployee("E5");
         assertNotNull(temp);
         temp.forEach((n) -> System.out.println(n.getEmpID()));
     }
 
     @Test
     public void DeleteEmployeeTest_param() {
-        List<Employee> temp = empcon.deleteEmployee_param("E1");
+        Employee e = new Employee("E6", "John", "SE", 9, 4500000, "Python", "n", "P2", "Bengaluru");
+        Employee res = empcon.addEmployee(e);
+        List<Employee> temp = empcon.deleteEmployee_param("E6");
         assertNotNull(temp);
         temp.forEach((n) -> System.out.println(n.getEmpID()));
     }
